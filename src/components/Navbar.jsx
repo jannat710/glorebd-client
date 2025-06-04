@@ -21,7 +21,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="shadow-sm sticky top-0 z-10">
+    <nav className="shadow-sm sticky top-0">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex font-semibold gap-6">
           <div className="flex items-center gap-3">
@@ -34,7 +34,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="hidden md:flex space-x-8 items-center">
+        <Link href="/" className="hidden md:flex space-x-8 items-center">
           <Image
             src={logo}
             alt="Logo"
@@ -43,7 +43,7 @@ const Navbar = () => {
             className=" object-contain"
             priority
           />
-        </div>
+        </Link>
         <div className="hidden lg:block">
           <div className="flex font-semibold gap-6">
             <div className="flex justify-center items-center gap-3">

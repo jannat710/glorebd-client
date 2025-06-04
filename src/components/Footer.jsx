@@ -1,27 +1,15 @@
 "use client";
 
-import { FaFacebookF, FaTwitter, FaGooglePlusG } from "react-icons/fa";
-import { MdEmail, MdPhone } from "react-icons/md";
 import Link from "next/link";
 import Image from "next/image";
+import { FaFacebookF, FaTwitter, FaGooglePlusG } from "react-icons/fa";
+import { MdEmail, MdPhone } from "react-icons/md";
 import logo from "../assets/images/f.png";
 
 const socialLinks = [
-  {
-    to: "/",
-    icon: <FaFacebookF />,
-    alt: "Facebook",
-  },
-  {
-    to: "/",
-    icon: <FaTwitter />,
-    alt: "Twitter",
-  },
-  {
-    to: "/",
-    icon: <FaGooglePlusG />,
-    alt: "Google+",
-  },
+  { to: "/", icon: <FaFacebookF />, alt: "Facebook" },
+  { to: "/", icon: <FaTwitter />, alt: "Twitter" },
+  { to: "/", icon: <FaGooglePlusG />, alt: "Google+" },
 ];
 
 const Footer = () => {
@@ -29,17 +17,19 @@ const Footer = () => {
     <footer className="bg-black text-white w-full">
       <div className="container mx-auto px-2 py-8 md:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Logo Section */}
+          {/* Logo & Description */}
           <div className="space-y-4">
-            <Image
-              src={logo}
-              alt="Logo"
-              width={250}
-              height={40}
-              className="object-contain"
-              priority
-            />
-            <p className="text-sm leading-relaxed text-gray-300">
+            <Link href="/">
+              <Image
+                src={logo}
+                alt="Logo"
+                width={250}
+                height={40}
+                className="object-contain"
+                priority
+              />
+            </Link>
+            <p className="text-sm leading-relaxed">
               আমাদের কালেকশন আপনাকে দেবে ফ্যাশনের আধুনিকতা এবং ঐতিহ্যের একটি
               নিখুঁত সংমিশ্রণ।
             </p>
@@ -49,9 +39,15 @@ const Footer = () => {
           <div className="space-y-2">
             <p className="text-xl font-semibold">Explore More</p>
             <div className="flex flex-col text-gray-400 space-y-1 text-sm">
-              <Link href="/">New Arrivals</Link>
-              <Link href="/">About Us</Link>
-              <Link href="/">Contact</Link>
+              <Link href="/" className="hover:text-primary">
+                New Arrivals
+              </Link>
+              <Link href="/about" className="hover:text-primary">
+                About Us
+              </Link>
+              <Link href="/contact" className="hover:text-primary">
+                Contact
+              </Link>
             </div>
           </div>
 
@@ -59,36 +55,51 @@ const Footer = () => {
           <div className="space-y-2">
             <p className="text-xl font-semibold">Client Experience</p>
             <div className="flex flex-col text-gray-400 space-y-1 text-sm">
-              <Link href="/">Track Your Order</Link>
-              <Link href="/">Returns & Exchanges</Link>
-              <Link href="/">Customer Reviews</Link>
-              <Link href="/">Privacy Policy</Link>
-              <Link href="/">FAQ</Link>
+              <Link href="/" className="hover:text-primary">
+                Track Your Order
+              </Link>
+              <Link href="/" className="hover:text-primary">
+                Returns & Exchanges
+              </Link>
+              <Link href="/" className="hover:text-primary">
+                Customer Reviews
+              </Link>
+              <Link href="/" className="hover:text-primary">
+                Privacy Policy
+              </Link>
+              <Link href="/" className="hover:text-primary">
+                FAQ
+              </Link>
             </div>
           </div>
 
-          {/* Contact & Social */}
+          {/* Contact & Social Links */}
           <div className="space-y-4">
             <p className="text-xl font-semibold uppercase">Get In Touch</p>
             <div className="text-gray-400 text-sm space-y-1">
-              <p className="flex items-center gap-2">
+              <a
+                href="tel:+8801855375963"
+                className="flex items-center gap-2 hover:text-primary"
+              >
                 <MdPhone className="text-lg" /> মোবাইল: (+88) 01855-375963
-              </p>
-              <p className="flex items-center gap-2">
+              </a>
+              <a
+                href="mailto:hello@glorebd.com"
+                className="flex items-center gap-2 hover:text-primary"
+              >
                 <MdEmail className="text-lg" /> ইমেইল: hello@glorebd.com
-              </p>
+              </a>
             </div>
 
-            {/* Social Icons */}
             <div className="flex gap-4 pt-2">
-              {socialLinks.map((link, idx) => (
+              {socialLinks.map(({ to, icon, alt }, idx) => (
                 <Link
                   key={idx}
-                  href={link.to}
-                  aria-label={link.alt}
+                  href={to}
+                  aria-label={alt}
                   className="bg-white text-black p-1 rounded-full hover:bg-primary hover:text-white transition"
                 >
-                  <span className="text-xl">{link.icon}</span>
+                  <span className="text-xl">{icon}</span>
                 </Link>
               ))}
             </div>
@@ -96,7 +107,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Text */}
       <div className="text-center text-xs sm:text-sm pb-6">
         <p>
           © {new Date().getFullYear()}. Powered by Cal

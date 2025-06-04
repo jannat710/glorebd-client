@@ -1,9 +1,13 @@
-import { Button } from "@/src/components/ui/button";
+import ProductList from "@/src/components/ProductList";
+import HeroSection from "@/src/sections/HeroSection";
+import Services from "@/src/sections/Services";
 
 export default function Home() {
   return (
     <div className="">
-      <Button>Click</Button>
+      <HeroSection />
+      <ProductList />
+      <Services />
     </div>
   );
 }

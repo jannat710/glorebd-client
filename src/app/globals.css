@@ -2,6 +2,10 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}
 
 :root {
   --card: oklch(1 0 0);
